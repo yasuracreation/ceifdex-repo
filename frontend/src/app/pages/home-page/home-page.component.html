@@ -1,0 +1,20 @@
+<!-- pending movies hear -->
+<div class="container">
+  <div class="row">
+  <h3>Pending</h3>
+  <app-movie-card-list [movieList$]="pendingMovies$">
+
+  </app-movie-card-list>
+</div>
+</div>
+
+<div class="container" style="margin-top: 20rem;">
+  <div class="row">
+  <h3>All Movie</h3>
+  <!-- added movies  -->
+  <app-movie-card-list [movieList$]="complitedMovies">
+
+  </app-movie-card-list>
+</div>
+</div>
+
