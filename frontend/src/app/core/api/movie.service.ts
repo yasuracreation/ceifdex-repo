@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, Observable } from 'rxjs';
-import { catchError, map, shareReplay, tap } from "rxjs/operators";
+import {  map, shareReplay, tap } from "rxjs/operators";
 import { MovieVM } from '../vm/movies/movie-vm.model';
 import { Movies } from './request-models/movies.model';
 import { mapPendingMovies } from '../mappers/pending-movie-response-mapper';
+import { server } from 'src/app/environment/envirenment';
 @Injectable({
   providedIn: 'root'
 })
@@ -19,7 +20,7 @@ export class MovieService {
     this.loadCompliteMovies();
   }
   loadPendingMovies(){
-    const pendingMovies$ =  this.http.get<Movies[]>('http://localhost:3000/api/movies/pending')
+    const pendingMovies$ =  this.http.get<Movies[]>(`${server}/api/movies/pending`)
     .pipe(
       map((response: Movies[]) => mapPendingMovies(response)),
      tap(courses => this.pendingMovieSubject.next(courses)),
@@ -28,7 +29,7 @@ export class MovieService {
 
   }
   loadCompliteMovies(){
-    const compliteMovies$ = this.http.get<Movies[]>('http://localhost:3000/api/movies/complite')
+    const compliteMovies$ = this.http.get<Movies[]>(`${server}/api/movies/complite`)
     .pipe(
       map((response: Movies[]) => mapPendingMovies(response)),
      tap(courses => this.complitedMoviesSubject.next(courses)),

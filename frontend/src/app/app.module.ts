@@ -8,7 +8,7 @@ import { LayoutModule } from './layout/layout.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import { environment } from './environment/envirenment';
 @NgModule({
   declarations: [
     AppComponent
@@ -21,6 +21,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HttpClientModule,
     NgbModule,
     FontAwesomeModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
