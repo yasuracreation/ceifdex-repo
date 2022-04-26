@@ -20,7 +20,7 @@ export class MovieService {
     this.loadCompliteMovies();
   }
   loadPendingMovies(){
-    const pendingMovies$ =  this.http.get<Movies[]>(`${server}/api/movies/pending`)
+    const pendingMovies$ =  this.http.get<Movies[]>(`/api/movies/pending`)
     .pipe(
       map((response: Movies[]) => mapPendingMovies(response)),
      tap(courses => this.pendingMovieSubject.next(courses)),
@@ -29,7 +29,7 @@ export class MovieService {
 
   }
   loadCompliteMovies(){
-    const compliteMovies$ = this.http.get<Movies[]>(`${server}/api/movies/complite`)
+    const compliteMovies$ = this.http.get<Movies[]>(`/api/movies/complite`)
     .pipe(
       map((response: Movies[]) => mapPendingMovies(response)),
      tap(courses => this.complitedMoviesSubject.next(courses)),
