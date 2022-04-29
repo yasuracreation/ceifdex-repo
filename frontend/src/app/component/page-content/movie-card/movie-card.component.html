@@ -1,22 +1,18 @@
 
 
 
-<div class="card d-flex " *ngIf="movie " style="width: 10rem;height:20rem;margin: 1rem;">
+<div class="card d-flex card-item" *ngIf="movie">
   <img class="card-img-top" [src]="movie?.imageUrl" alt="Card image cap">
-  <div  class="rating__top-right" *ngIf="movie.score && movie.score.overall" style="position: absolute; top: 8px; right: 16px;z-index: 100;color: white;background: red;border-radius: 5px;">
+  <div  class="rating__top-right card-rating-score" *ngIf="movie.score && movie.score.overall">
     <i class="fa-solid fa-star"></i>
     {{movie.score.overall}}</div>
 
-  <div class="card-body">
-    <h5 class="card-title">{{movie?.overview?.title}}</h5>
+  <div class="card-body ">
+    <h6 class="card-title cart-item-title">{{movie?.overview?.title}}</h6>
     <ng-container *ngFor="let genc of movie?.overview?.genres">
       <span class="badge badge-primary" style="background-color:rgb(60, 8, 106)">{{genc}}</span>
     </ng-container>
-    <p class="card-text" style="display: inline-block;
-    width: 180px;
-    white-space: nowrap;
-    overflow: hidden !important;
-    text-overflow: ellipsis;">{{movie?.overview?.plotSummery}}</p>
+    <p class="card-text cart-item-paragraph" >{{movie?.overview?.plotSummery}}</p>
   </div>
   <div class="card-footer">
     <span >90%</span>
